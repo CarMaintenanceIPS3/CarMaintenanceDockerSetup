@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  nextjs:
+    restart: always
+    build:
+        context: ./nextjs
+        dockerfile: Dockerfile
+    container_name: frontend_image
+    volumes:
+        - ./nextjs:/app
+        - /app/node_modules
+    ports:
+        - 3000:3000
+    depends_on:
+        - fauna_net_core_api
+    networks:
+        - express-api
+    environment:
+      API_BASE_URL: http://nextjs
+      API_PORT: 4000
+
+  fauna_net_core_api:
+    restart: always
+    build:
+      context: ./fauna_net_core_api
+      dockerfile: Dockerfile
+    container_name: server_image
+    ports:
+      - 4000:4000
+    volumes:
+      - ./fauna_net_core_api:/app
+    networks: 
+      - express-api
+    environment:
+      #TOKEN_SECRET: "YourTokenHere"
+      API_BASE_URL: http://fauna_net_core_api
+      API_PORT: 4000
+
+  nginx:
+    restart: always
+    build:
+        context: ./nginx
+        dockerfile: Dockerfile
+    ports:
+        - 8080:80
+    depends_on:
+        - fauna_net_core_api
+        - nextjs
+    networks:
+        - express-api
+
+networks:
+  express-api:
+    driver: bridge
