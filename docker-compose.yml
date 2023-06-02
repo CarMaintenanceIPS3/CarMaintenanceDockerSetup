@@ -13,7 +13,7 @@ services:
     ports:
         - 3000:3000
     depends_on:
-        - fauna_net_core_api
+        - fauna_db_api
     networks:
         - express-api
     environment:
@@ -23,18 +23,18 @@ services:
   fauna_net_core_api:
     restart: always
     build:
-      context: ./fauna_net_core_api
+      context: ./fauna_db_api
       dockerfile: Dockerfile
     container_name: server_image
     ports:
       - 4000:4000
     volumes:
-      - ./fauna_net_core_api:/app
+      - ./fauna_db_api:/app
     networks: 
       - express-api
     environment:
       #TOKEN_SECRET: "YourTokenHere"
-      API_BASE_URL: http://fauna_net_core_api
+      API_BASE_URL: http://fauna_db_api
       API_PORT: 4000
 
   nginx:
@@ -45,7 +45,7 @@ services:
     ports:
         - 8080:80
     depends_on:
-        - fauna_net_core_api
+        - fauna_db_api
         - nextjs
     networks:
         - express-api
