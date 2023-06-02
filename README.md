@@ -5,7 +5,7 @@ This project uses Docker and Docker Compose to simplify dependency management an
 ### Prerequisites
 
 The repositories needed are: 
-- API: [[https://github.com/CarMaintenanceIPS3/FaunaNetCoreAPI.git](https://github.com/CarMaintenanceIPS3/fauna_db_api)](https://github.com/CarMaintenanceIPS3/fauna_db_api)) 
+- API: [https://github.com/CarMaintenanceIPS3/fauna_db_api](https://github.com/CarMaintenanceIPS3/fauna_db_api)
 - Frontend: [https://github.com/CarMaintenanceIPS3/NextJS.git](https://github.com/CarMaintenanceIPS3/NextJS.git)
 
 Then make sure you have the following
