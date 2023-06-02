@@ -5,7 +5,7 @@ This project uses Docker and Docker Compose to simplify dependency management an
 ### Prerequisites
 
 The repositories needed are: 
-- API: [[https://github.com/CarMaintenanceIPS3/FaunaNetCoreAPI.git](https://github.com/CarMaintenanceIPS3/fauna_db_api)]([https://github.com/CarMaintenanceIPS3/FaunaNetCoreAPI.git](https://github.com/CarMaintenanceIPS3/fauna_db_api)) 
+- API: [[https://github.com/CarMaintenanceIPS3/FaunaNetCoreAPI.git](https://github.com/CarMaintenanceIPS3/fauna_db_api)](https://github.com/CarMaintenanceIPS3/fauna_db_api)) 
 - Frontend: [https://github.com/CarMaintenanceIPS3/NextJS.git](https://github.com/CarMaintenanceIPS3/NextJS.git)
 
 Then make sure you have the following
@@ -17,8 +17,8 @@ Then make sure you have the following
 ├── CarMaintenanceDockerSetup
 │   ├── docker-compose.yml
 │   ├── nginx
-│   ├── FaunaNetCoreAPI
-│   └── NextJS
+│   ├── faunadbapi
+│   └── nextjs
 ```
 
 
@@ -32,7 +32,7 @@ While the containers are running, you can develop as usual. The application code
 
 - For the Next.js application, Hot Module Replacement (HMR) is configured out of the box, so your changes will be immediately reflected in your running application.
 
-- For the .NET Core API, you might need to restart the service if changes are not being picked up. You can do this by stopping the running services with `Ctrl+C` and then running `docker-compose up` again.
+- For the FaunaDB API, you might need to restart the service if changes are not being picked up. You can do this by stopping the running services with `Ctrl+C` and then running `docker-compose up` again.
 
 ### Stopping the Application
 
