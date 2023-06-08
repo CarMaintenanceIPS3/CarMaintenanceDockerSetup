@@ -20,10 +20,10 @@ services:
       API_BASE_URL: http://nextjs
       API_PORT: 4000
 
-  fauna_net_core_api:
+  fauna_db_api:
     restart: always
     build:
-      context: ./fauna_db_api
+      context: ./fauna_db_api/fauna_db_api
       dockerfile: Dockerfile
     container_name: server_image
     ports:
@@ -32,10 +32,10 @@ services:
       - ./fauna_db_api:/app
     networks: 
       - express-api
-    environment:
-      #TOKEN_SECRET: "YourTokenHere"
+    environment:      
       API_BASE_URL: http://fauna_db_api
       API_PORT: 4000
+      fauna_db_api: ${FAUNA_DB_API}
 
   nginx:
     restart: always
